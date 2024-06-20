@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Vector2 movement;
 
+    public Camera cam;
+
     public float moveSpeed;
 
     private void Start()
@@ -27,6 +29,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    public void MoveToNewScreen(Transform screen, Transform entrance)
+    {
+        transform.position = new Vector3(entrance.position.x, entrance.position.y, transform.position.z);
+        cam.transform.position = new Vector3(screen.position.x, screen.position.y, cam.transform.position.z);
     }
 
 }
