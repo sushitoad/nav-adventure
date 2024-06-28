@@ -6,6 +6,7 @@ public class ScreenExit : MonoBehaviour
 {
     PlayerController player;
     public Transform incomingScreen, entrancePoint;
+    public bool isMistExit;
 
     private void Start() {
         player = FindObjectOfType<PlayerController>();
@@ -14,7 +15,7 @@ public class ScreenExit : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            player.MoveToNewScreen(incomingScreen, entrancePoint);
+            player.MoveToNewScreen(incomingScreen, entrancePoint, isMistExit);
         }    
     }
 }
