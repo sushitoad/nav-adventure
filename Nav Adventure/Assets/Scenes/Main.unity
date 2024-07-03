@@ -429,7 +429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incomingScreen: {fileID: 76581985}
   entrancePoint: {fileID: 1986217050}
-  isMistExit: 0
 --- !u!61 &180118215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -818,6 +817,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -891,6 +891,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8d5836a2d9c0f418437b1298c42352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &524254720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1313,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incomingScreen: {fileID: 928545000}
   entrancePoint: {fileID: 1259152368}
-  isMistExit: 1
 --- !u!61 &981391813
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1375,7 +1386,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incomingScreen: {fileID: 1564589034}
   entrancePoint: {fileID: 608747813}
-  isMistExit: 1
 --- !u!61 &1026730276
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1449,7 +1459,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incomingScreen: {fileID: 1564589034}
   entrancePoint: {fileID: 1713213591}
-  isMistExit: 1
 --- !u!61 &1046800500
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1528,7 +1537,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incomingScreen: {fileID: 850006033}
   entrancePoint: {fileID: 396115971}
-  isMistExit: 1
 --- !u!61 &1239568139
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1810,7 +1818,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incomingScreen: {fileID: 1564589034}
   entrancePoint: {fileID: 1825337142}
-  isMistExit: 1
 --- !u!61 &1363300830
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2192,9 +2199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef06ba795a5e8c84b9e94b11adac7e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 519420031}
   moveSpeed: 5.5
-  camTransitionTime: 0.69
 --- !u!61 &1618085841
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2538,7 +2543,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incomingScreen: {fileID: 928545000}
   entrancePoint: {fileID: 1259152368}
-  isMistExit: 1
 --- !u!61 &1940865873
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2831,7 +2835,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incomingScreen: {fileID: 1564589034}
   entrancePoint: {fileID: 608747813}
-  isMistExit: 0
 --- !u!1001 &5587552782645079347
 PrefabInstance:
   m_ObjectHideFlags: 0
