@@ -5,6 +5,10 @@ using UnityEngine;
 public class Ledge : MonoBehaviour
 {
     PlayerController player;
+    bool isJumping;
+    float jumpCounter;
+    Vector3 travelPoint, jumpStart;
+    public float jumpLength;
     public float jumpDistance = 1f;
     public BoxCollider2D lower;
 
@@ -13,20 +17,27 @@ public class Ledge : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
     }
 
+    private void Update()
+    {
+        if (isJumping)
+        {
+            player.movement = Vector2.zero;
+            player.transform.position = Vector3.Lerp(jumpStart, travelPoint, jumpCounter);
+            jumpCounter += Time.deltaTime / jumpLength;
+            if (jumpCounter >= 1f) { isJumping = false; lower.enabled = true; }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player") 
         {
-            Debug.Log("Jump off the ledge!");
             lower.enabled = false;
-            float xJump = player.transform.position.x;
-            float yJump = player.transform.position.y;
-            //this does not work yet, need to not multiply position by jump distance
-            if(player.movement.x >= 1f) {xJump = xJump * jumpDistance;}
-            if(player.movement.y >= 1f) {yJump = yJump * jumpDistance;}
-            Vector3 jumpDirection = new Vector3(xJump, yJump, 0f);
-            player.transform.position = jumpDirection;
-            lower.enabled = true;
+            Vector2 travel = player.movement * jumpDistance;
+            travelPoint = new Vector3(player.transform.position.x + travel.x, player.transform.position.y + travel.y, 0f);
+            jumpStart = player.transform.position;
+            isJumping = true;
+            jumpCounter = 0;
         }
     }
 }
