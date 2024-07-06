@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
-    Vector2 movement;
+    public Vector2 movement;
    
     public float moveSpeed;
 
