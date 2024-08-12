@@ -24,6 +24,7 @@ public class MistController : MonoBehaviour
     public TMP_Text timerText;
     float mistCountdown;
     PlayerController player;
+    [SerializeField] MistObject[] boxes;
 
     private void Start()
     {
@@ -41,6 +42,10 @@ public class MistController : MonoBehaviour
         if (mistCountdown <= 0f)
         {
             WarpToMistRune();
+            foreach (MistObject box in boxes)
+            {
+                box.OnSeasonChange();
+            }
             mistCountdown = mistTime;
             if(MistSeason < seasonMax)
             {
