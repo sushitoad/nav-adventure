@@ -3,8 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MistTimer : MonoBehaviour
+public class MistController : MonoBehaviour
 {
+    public int seasonMin, seasonMax;
+    private int mistSeason;
+    public int MistSeason
+        { 
+            get {return mistSeason;} 
+            private set
+            {
+                if(value >= seasonMin && value <= seasonMax)
+                {
+                    mistSeason = value;
+                }
+            } 
+        }
+    
     public Transform mistRune;
     public float mistTime;
     public TMP_Text timerText;
@@ -16,6 +30,7 @@ public class MistTimer : MonoBehaviour
         mistCountdown = mistTime;
         player = FindObjectOfType<PlayerController>();
         timerText.text = mistTime.ToString();
+        MistSeason = seasonMin;
     }
 
     private void Update()
@@ -27,6 +42,14 @@ public class MistTimer : MonoBehaviour
         {
             WarpToMistRune();
             mistCountdown = mistTime;
+            if(MistSeason < seasonMax)
+            {
+                MistSeason++;
+            } else
+            {
+                MistSeason = seasonMin;
+            }
+            Debug.Log(MistSeason.ToString());
         }
     }
 

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class MistCheckpoint : MonoBehaviour
 {
-    MistTimer mistController;
+    MistController mistController;
 
     public Transform mistRune;
 
     private void Start()
     {
-        mistController = FindObjectOfType<MistTimer>();
+        mistController = FindObjectOfType<MistController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -104655,6 +104655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373a478a70317bd45a4b50e838b9a3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seasonMin: 1
+  seasonMax: 4
   mistRune: {fileID: 382718271}
   mistTime: 5
   timerText: {fileID: 1936175147}
