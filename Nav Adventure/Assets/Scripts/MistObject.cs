@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class MistObject : MonoBehaviour
 {
-    //this eventually should subscribe a function to an event
+    //this eventually should unsubscribe the event at a proper time?
     [SerializeField] bool seasonFlip = false;
+
+    private void Start() 
+    {
+        FindObjectOfType<MistController>().mistSeasonEvent += OnSeasonChange;
+    }
 
     public void OnSeasonChange()
     {
