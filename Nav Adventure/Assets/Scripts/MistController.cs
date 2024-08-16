@@ -24,6 +24,7 @@ public class MistController : MonoBehaviour
     
     public Transform mistRune;
     public float mistTime;
+    public float playerIdleMistMod, dewLightMistMod;
     public Slider mistBar;
     float mistBarWidth;
     float mistCountdown;
@@ -39,7 +40,13 @@ public class MistController : MonoBehaviour
 
     private void Update()
     {
-        mistCountdown += Time.deltaTime;
+        float countMods = 1f;
+        if(Mathf.Abs(player.movement.x) <= 0.05f && Mathf.Abs(player.movement.y) <= 0.05f)
+        {
+            countMods -= playerIdleMistMod;
+        }
+        //if under dewlight, subract mod from countMods
+        mistCountdown += Time.deltaTime * countMods;
 
         mistBar.value = mistCountdown / mistTime;
         if (mistCountdown >= mistTime)

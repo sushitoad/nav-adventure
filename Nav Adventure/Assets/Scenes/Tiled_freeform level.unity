@@ -104860,7 +104860,9 @@ MonoBehaviour:
   seasonMin: 1
   seasonMax: 4
   mistRune: {fileID: 382718271}
-  mistTime: 60
+  mistTime: 10
+  playerIdleMistMod: 0.25
+  dewLightMistMod: 0
   mistBar: {fileID: 1594281827}
 --- !u!4 &1311582900
 Transform:
