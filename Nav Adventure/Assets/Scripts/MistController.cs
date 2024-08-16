@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class MistController : MonoBehaviour
 {
@@ -23,25 +24,25 @@ public class MistController : MonoBehaviour
     
     public Transform mistRune;
     public float mistTime;
-    public TMP_Text timerText;
+    public Slider mistBar;
+    float mistBarWidth;
     float mistCountdown;
     PlayerController player;
-    //[SerializeField] MistObject[] boxes;
 
     private void Start()
     {
-        mistCountdown = mistTime;
+        mistCountdown = 0f;
         player = FindObjectOfType<PlayerController>();
-        timerText.text = mistTime.ToString();
         MistSeason = seasonMin;
+        mistBar.value = 0f;
     }
 
     private void Update()
     {
-        mistCountdown -= Time.deltaTime;
-        int textNum = Mathf.CeilToInt(mistCountdown);
-        timerText.text = textNum.ToString();
-        if (mistCountdown <= 0f)
+        mistCountdown += Time.deltaTime;
+
+        mistBar.value = mistCountdown / mistTime;
+        if (mistCountdown >= mistTime)
         {
             WarpToMistRune();
             SeasonChange();
@@ -55,11 +56,7 @@ public class MistController : MonoBehaviour
 
     void SeasonChange()
     {
-        /*foreach (MistObject box in boxes)
-            {
-                box.OnSeasonChange();
-            }*/
-            mistCountdown = mistTime;
+            mistCountdown = 0f;
             if(MistSeason < seasonMax)
             {
                 MistSeason++;
