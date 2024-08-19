@@ -27,7 +27,7 @@ public class MistController : MonoBehaviour
     public float playerIdleMistMod, dewLightMistMod;
     public Slider mistBar;
     float mistBarWidth;
-    float mistCountdown;
+    [HideInInspector] public float mistCountdown;
     PlayerController player;
 
     private void Start()
