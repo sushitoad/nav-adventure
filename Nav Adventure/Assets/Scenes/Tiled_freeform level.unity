@@ -104735,7 +104735,7 @@ MonoBehaviour:
   seasonMin: 1
   seasonMax: 4
   mistRune: {fileID: 382718271}
-  mistTime: 10
+  mistTime: 15
   playerIdleMistMod: 0.25
   dewLightMistMod: 0
   mistBar: {fileID: 1594281827}
@@ -111401,7 +111401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7853152650298675497, guid: bea86eaabe83ea142af6ac68390bce7e, type: 3}
       propertyPath: timerChangePercent
-      value: 0.9
+      value: 0.66
       objectReference: {fileID: 0}
     - target: {fileID: 7853152650298675498, guid: bea86eaabe83ea142af6ac68390bce7e, type: 3}
       propertyPath: m_RootOrder
