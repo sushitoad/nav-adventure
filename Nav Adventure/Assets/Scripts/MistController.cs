@@ -28,6 +28,7 @@ public class MistController : MonoBehaviour
     public Slider mistBar;
     float mistBarWidth;
     [HideInInspector] public float mistCountdown;
+    [HideInInspector] public bool isUnderDewlight;
     PlayerController player;
 
     private void Start()
@@ -45,7 +46,14 @@ public class MistController : MonoBehaviour
         {
             countMods -= playerIdleMistMod;
         }
-        //if under dewlight, subract mod from countMods
+        if(isUnderDewlight)
+        {
+            countMods -= dewLightMistMod;
+        }
+        if(countMods < 0f)
+        {
+            countMods = 0f;
+        }
         mistCountdown += Time.deltaTime * countMods;
 
         mistBar.value = mistCountdown / mistTime;
