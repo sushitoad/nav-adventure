@@ -111392,18 +111392,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7853152650298675497, guid: bea86eaabe83ea142af6ac68390bce7e, type: 3}
-      propertyPath: mistBehavior
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7853152650298675497, guid: bea86eaabe83ea142af6ac68390bce7e, type: 3}
-      propertyPath: hasDisappeared
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7853152650298675497, guid: bea86eaabe83ea142af6ac68390bce7e, type: 3}
-      propertyPath: timerChangePercent
-      value: 0.66
-      objectReference: {fileID: 0}
     - target: {fileID: 7853152650298675498, guid: bea86eaabe83ea142af6ac68390bce7e, type: 3}
       propertyPath: m_RootOrder
       value: 36
@@ -151607,6 +151595,10 @@ PrefabInstance:
     - target: {fileID: 7853152650298675501, guid: bea86eaabe83ea142af6ac68390bce7e, type: 3}
       propertyPath: m_Name
       value: Mist Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284799798800771773, guid: bea86eaabe83ea142af6ac68390bce7e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bea86eaabe83ea142af6ac68390bce7e, type: 3}
