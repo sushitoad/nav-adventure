@@ -5,27 +5,31 @@ using UnityEngine;
 public class MistCheckpoint : MonoBehaviour
 {
     MistController mistController;
-
+    public float fadeSpeed = 2f;
     public Transform mistRune;
     public ParticleSystem fogWall;
     [HideInInspector] public bool activated = false;
     float startEmissionRate, currentEmissionRate;
-    ParticleSystem.EmissionModule emission;
 
     private void Start()
     {
         mistController = FindObjectOfType<MistController>();
         activated = false;
-        emission = fogWall.GetComponent<ParticleSystem.EmissionModule>();
-        startEmissionRate = emission.rateOverTime.constant;
-        print(startEmissionRate);
+        startEmissionRate = fogWall.emission.rateOverTime.constant;
     }
 
     public void Update()
     {
-        if(activated)
+        currentEmissionRate = fogWall.emission.rateOverTime;
+        if(activated && currentEmissionRate > 0f)
         {
             //lower emission
+            float reduction = Time.deltaTime * fadeSpeed;
+            fogWall.emission.rateOverTime -= reduction;
+            if(currentEmissionRate < 0f)
+            {
+                fogWall.emission.rateOverTime = 0f;
+            }
         } else if(!activated)
         {
             //raise emission
