@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Dewlight : MonoBehaviour
 {
     public Sprite close, transition, open;
     public float transitionSpeed = 0.2f;
+    Light2D glow;
+    float startIntensity = 2f;
     MistController mistController;
     SpriteRenderer sprite;
-    //Animator animator;
 
     private void Start() 
     {
         mistController = FindObjectOfType<MistController>();
         sprite = GetComponent<SpriteRenderer>();
-        //animator = GetComponent<Animator>();
+        glow = GetComponentInChildren<Light2D>();
+        startIntensity = glow.intensity;
+        glow.intensity = 0f;
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -22,7 +26,6 @@ public class Dewlight : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             mistController.isUnderDewlight = true;
-            //animator.Play("Open_Dewlight");
             StopAllCoroutines();
             StartCoroutine(AnimateTransition());
         }
@@ -32,7 +35,6 @@ public class Dewlight : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             mistController.isUnderDewlight = false;
-            //animator.Play("Close_Dewlight");
             StopAllCoroutines();
             StartCoroutine(AnimateTransition());
         }
@@ -45,9 +47,11 @@ public class Dewlight : MonoBehaviour
         if(mistController.isUnderDewlight == true)
         {
             sprite.sprite = open;
+            glow.intensity = startIntensity;
         } else 
         {
             sprite.sprite = close;
+            glow.intensity = 0f;
         }
     }
 }
