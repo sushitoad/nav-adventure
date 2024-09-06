@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
 
-    public Vector2 movement;
+    [HideInInspector] public Vector2 movement;
    
     public float moveSpeed;
 
