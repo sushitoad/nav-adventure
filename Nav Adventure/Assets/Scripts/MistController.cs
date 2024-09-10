@@ -27,13 +27,13 @@ public class MistController : MonoBehaviour
     public float playerIdleMistMod, dewLightMistMod;
     public Slider mistBar;
     float mistBarWidth;
-    [HideInInspector] public float mistCountdown;
+    [HideInInspector] public float mistCounter;
     [HideInInspector] public bool isUnderDewlight;
     PlayerController player;
 
     private void Start()
     {
-        mistCountdown = 0f;
+        mistCounter = 0f;
         player = FindObjectOfType<PlayerController>();
         MistSeason = seasonMin;
         mistBar.value = 0f;
@@ -54,10 +54,10 @@ public class MistController : MonoBehaviour
         {
             countMods = 0f;
         }
-        mistCountdown += Time.deltaTime * countMods;
+        mistCounter += Time.deltaTime * countMods;
 
-        mistBar.value = mistCountdown / mistTime;
-        if (mistCountdown >= mistTime)
+        mistBar.value = mistCounter / mistTime;
+        if (mistCounter >= mistTime)
         {
             WarpToMistRune();
             SeasonChange();
@@ -71,7 +71,7 @@ public class MistController : MonoBehaviour
 
     void SeasonChange()
     {
-            mistCountdown = 0f;
+            mistCounter = 0f;
             if(MistSeason < seasonMax)
             {
                 MistSeason++;

@@ -30,7 +30,7 @@ public class MistObject : MonoBehaviour
     {
         if(mistBehavior == MistBehavior.Timer) 
         {
-            float cyclePercent = mistController.mistCountdown / mistController.mistTime;
+            float cyclePercent = mistController.mistCounter / mistController.mistTime;
             if (cyclePercent >= timerChangePercent)
             {
                 ToggleDisappear();
