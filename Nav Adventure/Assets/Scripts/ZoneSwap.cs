@@ -10,23 +10,24 @@ public class ZoneSwap : MonoBehaviour
 
     MistController mistController;
     int zoneIndex;
+    bool hasSwapped;
 
     private void Start() 
     {
         mistController = FindObjectOfType<MistController>();
         mistController.mistSeasonEvent += ResetForNewSeason;
-        zoneIndex = 0;
-        Swap(zoneIndex);
+        ResetForNewSeason();
     }
 
     private void Update() 
     {
         float percentMisty = mistController.mistCounter / mistController.mistTime;
-        //right now this is broken because it keeps doing this over and over, needs a check to stop it
-        if(percentMisty >= swapTimePercent)
+        //needs to also check if this is in the view of the player, and only switch if it isn't
+        if(percentMisty >= swapTimePercent && !hasSwapped)
         {
             zoneIndex++;
             Swap(zoneIndex);
+            hasSwapped = true;
         }
     }
 
@@ -43,5 +44,6 @@ public class ZoneSwap : MonoBehaviour
     {
         Swap(0);
         zoneIndex = 0;
+        hasSwapped = false;
     }
 }
