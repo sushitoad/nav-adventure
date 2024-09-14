@@ -5,12 +5,17 @@ using UnityEngine;
 public class ZoneSwap : MonoBehaviour
 {
     //try and make a struct that bundles the game object and float variables together
-    public GameObject[] zones;
-    public float swapTimePercent;
+    public class Zone 
+    {
+        public GameObject elements;
+        public float swapTimePercent;
+    }
+    //how do I get this to show in inspector?
+    public Zone[] zones;
 
     MistController mistController;
     int zoneIndex;
-    bool hasSwapped;
+    float currentSwapPercent;
 
     private void Start() 
     {
@@ -23,27 +28,26 @@ public class ZoneSwap : MonoBehaviour
     {
         float percentMisty = mistController.mistCounter / mistController.mistTime;
         //needs to also check if this is in the view of the player, and only switch if it isn't
-        if(percentMisty >= swapTimePercent && !hasSwapped)
+        if(percentMisty >= currentSwapPercent)
         {
             zoneIndex++;
             Swap(zoneIndex);
-            hasSwapped = true;
         }
     }
 
     public void Swap(int zoneToActivate)
     {
-        foreach (GameObject zone in zones)
+        foreach (Zone zone in zones)
         {
-            zone.SetActive(false);
+            zone.elements.SetActive(false);
         }
-        zones[zoneToActivate].SetActive(true);
+        zones[zoneToActivate].elements.SetActive(true);
+        currentSwapPercent = zones[zoneToActivate].swapTimePercent;
     }
 
     public void ResetForNewSeason()
     {
         Swap(0);
         zoneIndex = 0;
-        hasSwapped = false;
     }
 }
